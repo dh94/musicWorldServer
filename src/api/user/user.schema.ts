@@ -30,6 +30,7 @@ export const resolvers = {
 			return connectors.user.createUser(args)
 				.then(user => {
 					req.session.userId = user.id;
+					req.session.cookie.maxAge = 360000;
 					pubsub.publish(USER_CREATED, user);
 					return user;
 				});
@@ -41,6 +42,7 @@ export const resolvers = {
 				return connectors.user.verifyUser(args)
 					.then(user => {
 						req.session.userId = user.id;
+						req.session.cookie.maxAge = 360000;
 						return user;
 					});
 		},
