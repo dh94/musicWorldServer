@@ -1,13 +1,17 @@
 
-# a simple user type
 type User {
     id: ID,
+    userName: String,
     firstName: String,
-    lastName: String
+    lastName: String,
+    isAdmin: Boolean
 }
 
 # queries on user
 type UserQueries {
+    # find the connected user
+    me: User
+    
     # find a user with a given id
     user(id: ID!): User
 
@@ -18,7 +22,16 @@ type UserQueries {
 type UserMutations {
     # create a new user and insert it into the db
     createUser(
+        userName: String!
+        password: String!
         firstName: String!
         lastName: String!
     ): User
+
+    loginUser(
+        userName: String!
+        password: String!
+    ): User
+
+    disconnect: Boolean
 }

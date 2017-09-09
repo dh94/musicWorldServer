@@ -5,7 +5,7 @@ import { attachConnectors } from '../api/schema';
 
 const router = Router();
 router.use('/graphql', graphqlExpress((req) => {
-	const context = {};
+	const context = { req };
 	attachConnectors(context);
 	return { 
 		schema,

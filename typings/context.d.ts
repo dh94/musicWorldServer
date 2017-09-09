@@ -1,3 +1,4 @@
+import { Request } from 'Express';
 import { UserService } from '../src/api/user/user.service';
 
 export interface IConnectors {
@@ -6,4 +7,5 @@ export interface IConnectors {
 
 export interface IGraphQLContext {
 	connectors: IConnectors;
+	req: Request;
 }

@@ -8,11 +8,30 @@ export class UserService {
 		this.userLoader = new Dataloader<string, IUser>(userIds => this.loadUsers(userIds));
 	}
 
-	public createUser({ firstName, lastName }): Promise<IUser> {
+	public createUser({ userName, password, firstName, lastName }): Promise<IUser> {
 		const usr = new User();
+		usr.userName = userName;
+		usr.password = password;
 		usr.firstName = firstName;
 		usr.lastName = lastName;
-		return usr.save();
+
+		return User.findOne({ userName })
+			.then(user => {
+				if (user)
+					throw new Error('user allready exists');
+				return usr.save();
+			});
+	}
+
+	public verifyUser({ userName, password }): Promise<IUser> {
+		return User.findOne({
+			userName,
+			password,
+		}).then(user => {
+			if (!user)
+				throw new Error("incorrect parameters");
+			return user;
+		});
 	}
 
 	public findUsers({ ids }): Promise<IUser[]> {

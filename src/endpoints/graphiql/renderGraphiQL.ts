@@ -1,6 +1,6 @@
 import * as ip from 'ip';
 
-const staticPath = `${ip.address()}:3000`;
+const staticPath = `${ip.address()}:4200`;
 
 // Ensures string values are safe to be used within a <script> tag.
 // TODO: I don't think that's the right escape function

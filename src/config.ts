@@ -14,7 +14,7 @@ const configuration = {
 		},
 		server: {
 			host: 'localhost',
-			port: process.env.PORT || '3000',
+			port: process.env.PORT || '4200',
 			graphiql: true,
 		},
 		logger: {

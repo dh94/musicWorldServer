@@ -12,6 +12,7 @@ import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
+import * as session from 'express-session';
 
 // Import all routes
 import routes from './endpoints/index';
@@ -32,6 +33,7 @@ app.use(helmet.hsts({
 
 // Enable cors for all routes and origins
 app.use(cors());
+app.use(session({ secret: "shhhh" }));
 
 // add body parser
 app.use(bodyParser.urlencoded({ extended: true }));
