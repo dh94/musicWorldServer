@@ -1,8 +1,10 @@
 # the root queries
 type Query {
     userQueries: UserQueries
+    songQueries: SongQueries
 }
 
 type Mutation {
     userMutations: UserMutations
+    songMutations: SongMutations
 }

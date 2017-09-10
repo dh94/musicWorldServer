@@ -1,7 +1,30 @@
 type Song {
 	id: Int
 	name: String
-	artist: Artist
+	#artist: Artist
+	album: String
+	publisher: String
+	publicationYear: Int
+	genere: String
+	views: Int
+	words: String
+}
+
+type SongQueries {
+	topSongs: [Song]
+	song(id: ID): Song
+}
+
+type SongMutations {
+	createSong(input: SongInput): Song
+	removeSong(id: ID!): Song
+	updateSong(input: SongInput): Song
+	songViewed(id: ID!): Song
+}
+
+input SongInput {
+	name: String!
+	artist: ID
 	album: String
 	publisher: String
 	publicationYear: Int

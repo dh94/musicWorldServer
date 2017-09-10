@@ -14,7 +14,7 @@ export interface ISong extends mongoose.Document {
 
 export const SongSchema = new mongoose.Schema({
 	name: String,
-	artist: { type: mongoose.Types.ObjectId, ref: 'Artist'},
+	artist: { type: mongoose.Schema.Types.ObjectId, ref: 'Artist'},
 	album: String,
 	publisher: String,
 	publicationYear: Number,
