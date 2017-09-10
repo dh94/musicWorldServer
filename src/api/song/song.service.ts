@@ -63,4 +63,8 @@ export class SongService {
 	public topSongs() {
 		return Song.find({}).sort('-views').limit(10);
 	}
+
+	public allSongs() {
+		return Song.find({});
+	}
 }

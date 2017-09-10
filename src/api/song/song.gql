@@ -12,6 +12,7 @@ type Song {
 
 type SongQueries {
 	topSongs: [Song]
+	allSongs: [Song]
 	song(id: ID): Song
 }
 

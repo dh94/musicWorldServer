@@ -32,8 +32,8 @@ app.use(helmet.hsts({
 }));
 
 // Enable cors for all routes and origins
-app.use(cors());
-app.use(session({ secret: "shhhh" }));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true}));
+app.use(session({ secret: "shhhh", saveUninitialized: false, rolling: true }));
 
 // add body parser
 app.use(bodyParser.urlencoded({ extended: true }));
