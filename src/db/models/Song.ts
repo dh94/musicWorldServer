@@ -19,7 +19,7 @@ export const SongSchema = new mongoose.Schema({
 	publisher: String,
 	publicationYear: Number,
 	genere: String,
-	views: Number,
+	views: { type: Number, default: 0 },
 	words: String,
 });
 

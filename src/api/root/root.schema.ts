@@ -5,8 +5,10 @@ export const schema = [readFileSync(__dirname + '/root.gql', 'utf8')];
 export const resolvers = {
 	Query: {
 		userQueries: () => ({}),
+		songQueries: () => ({}),
 	},
 	Mutation: {
 		userMutations: () => ({}),
+		songMutations: () => ({}),
 	},
 };

@@ -1,5 +1,5 @@
 type Song {
-	id: Int
+	id: ID!
 	name: String
 	#artist: Artist
 	album: String
@@ -18,7 +18,7 @@ type SongQueries {
 type SongMutations {
 	createSong(input: SongInput): Song
 	removeSong(id: ID!): Song
-	updateSong(input: SongInput): Song
+	updateSong(id: ID!, input: SongInput): Song
 	songViewed(id: ID!): Song
 }
 
