@@ -1,6 +1,27 @@
 type Artist {
-	id: Int
+	id: ID!
   	firstName: String
+  	lastName: String
+  	country: String
+	# sum of views of the artists songs
+	views: Int
+}
+
+type ArtistQueries {
+	topArtists: [Artist]
+	artist(id: ID): Artist
+	# firstName, lastName are contains search, country is exact search
+	search(firstName: String, lastName: String, country: String): [Artist]
+}
+
+type ArtistMutations {
+	createArtist(input: ArtistInput): Artist
+	removeArtist(id: ID!): Artist
+	updateArtist(id: ID!, input: ArtistInput): Artist
+}
+
+input ArtistInput {
+	firstName: String
   	lastName: String
   	country: String
 }

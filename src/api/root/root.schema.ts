@@ -6,9 +6,11 @@ export const resolvers = {
 	Query: {
 		userQueries: () => ({}),
 		songQueries: () => ({}),
+		artistQueries: () => ({}),
 	},
 	Mutation: {
 		userMutations: () => ({}),
 		songMutations: () => ({}),
+		artistMutations: () => ({}),
 	},
 };

@@ -11,7 +11,6 @@ export const ArtistSchema = new mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	country: String,
-	views: Number,
 });
 
 const Artist = mongoose.model<IArtist>('Artist', ArtistSchema);

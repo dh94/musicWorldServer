@@ -1,3 +1,4 @@
+import Artist from '../../db/models/Artist';
 import Song, { ISong } from '../../db/models/Song';
 
 export class SongService {
@@ -9,10 +10,17 @@ export class SongService {
 		song.publicationYear = publicationYear;
 		song.genere = genere;
 		song.words = words;
-		return song.save();
+
+		return Artist.findById(artist)
+			.then(foundArtist => {
+				if (!foundArtist)
+					throw new Error("no such artist");
+				song.artist = foundArtist;
+				return song.save();
+			});
 	}
 
-	public updateSong({ id, input: { name, artist, album, publisher, publicationYear, genere, words } }): Promise<ISong> {
+	public updateSong({ id, input: { name, album, publisher, publicationYear, genere, words } }): Promise<ISong> {
 		return Song.findById(id)
 			.then(song => {
 				if (!song)
