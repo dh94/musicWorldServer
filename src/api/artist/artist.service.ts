@@ -38,6 +38,10 @@ export class ArtistService {
 		return Artist.findById(id).then(artist => artist);
 	}
 
+	public findAll(): Promise<IArtist[]> {
+		return Artist.find({}).then(artists => artists);
+	}
+
 	public search({ firstName, lastName, country }): Promise<IArtist[]> {
 		const qry: any = {};
 

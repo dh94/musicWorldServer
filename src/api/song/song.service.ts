@@ -20,7 +20,7 @@ export class SongService {
 			});
 	}
 
-	public updateSong({ id, input: { name, album, publisher, publicationYear, genere, words } }): Promise<ISong> {
+	public updateSong({ id, input: { name, artist, album, publisher, publicationYear, genere, words } }): Promise<ISong> {
 		return Song.findById(id)
 			.then(song => {
 				if (!song)
@@ -38,7 +38,16 @@ export class SongService {
 				if (words)
 					song.words = words;
 
-				return song.save();
+				if (artist)
+					return Artist.findById(artist)
+						.then(foundArtist => {
+							if (!foundArtist)
+								throw new Error("no such artist");
+							song.artist = foundArtist;
+							return song.save();
+						});
+				else
+					return song.save();
 			});
 	}
 

@@ -10,6 +10,7 @@ type Artist {
 type ArtistQueries {
 	topArtists: [Artist]
 	artist(id: ID): Artist
+	allArtists: [Artist]
 	# firstName, lastName are contains search, country is exact search
 	search(firstName: String, lastName: String, country: String): [Artist]
 }

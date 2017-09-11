@@ -32,6 +32,9 @@ export const resolvers = {
 		artist: (root, args, { connectors }: IGraphQLContext) => {
 			return connectors.artist.findById(args);
 		},
+		allArtists: (root, args, { connectors }: IGraphQLContext) => {
+			return connectors.artist.findAll();
+		},
 		search: (root, args, { connectors }: IGraphQLContext) => {
 			return connectors.artist.search(args);
 		},
