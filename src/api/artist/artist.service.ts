@@ -32,11 +32,14 @@ export class ArtistService {
 	}
 
 	public removeArtist({ id }): Promise<IArtist> {
-		return Artist.findByIdAndRemove(id)
-			.then(artist => {
-				if (!artist)
-					throw new Error('no such Artist');
-				return artist;
+		return Song.remove({ artist: id})
+			.then(() => {
+				return Artist.findByIdAndRemove(id)
+				.then(artist => {
+					if (!artist)
+						throw new Error('no such Artist');
+					return artist;
+				});
 			});
 	}
 
