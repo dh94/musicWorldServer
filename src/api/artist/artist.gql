@@ -25,4 +25,6 @@ input ArtistInput {
 	firstName: String
   	lastName: String
   	country: String
+	lat: Float
+	long: Float
 }

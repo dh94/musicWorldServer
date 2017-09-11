@@ -76,4 +76,17 @@ export class SongService {
 	public allSongs() {
 		return Song.find({});
 	}
+
+	public search({ name, album, publicationYear }): Promise<ISong[]> {
+		const qry: any = {};
+
+		if (name)
+			qry.name = new RegExp(`.*${name}.*`, "i");
+		if (album)
+			qry.album = new RegExp(`.*${album}.*`, "i");
+		if (publicationYear)
+			qry.publicationYear = publicationYear;
+
+		return Song.find(qry).then(songs => songs);
+	}
 }

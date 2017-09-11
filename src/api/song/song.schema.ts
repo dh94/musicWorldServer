@@ -35,6 +35,9 @@ export const resolvers = {
 		allSongs: (root, args, { connectors }: IGraphQLContext) => {
 			return connectors.song.allSongs();
 		},
+		search: (root, args, { connectors }: IGraphQLContext) => {
+			return connectors.song.search(args);
+		},
 	},
 	Song: {
 		artist: (root, args, { connectors }: IGraphQLContext) => {

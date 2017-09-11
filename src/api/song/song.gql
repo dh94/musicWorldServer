@@ -14,6 +14,7 @@ type SongQueries {
 	topSongs: [Song]
 	allSongs: [Song]
 	song(id: ID): Song
+	search(name: String, album: String, publicationYear: Int): [Song]
 }
 
 type SongMutations {

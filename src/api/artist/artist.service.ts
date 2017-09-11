@@ -1,15 +1,17 @@
 import Song from '../../db/models/Song';
 import Artist, { IArtist } from '../../db/models/Artist';
 export class ArtistService {
-	public createArtist({ firstName, lastName, country }): Promise<IArtist> {
+	public createArtist({ firstName, lastName, country, lat, long }): Promise<IArtist> {
 		const artist = new Artist();
 		artist.firstName = firstName;
 		artist.lastName = lastName;
 		artist.country = country;
+		artist.lat = lat;
+		artist.long = long;
 		return artist.save();
 	}
 
-	public updateArtist({ id, input: { firstName, lastName, country } }): Promise<IArtist> {
+	public updateArtist({ id, input: { firstName, lastName, country, lat, long } }): Promise<IArtist> {
 		return Artist.findById(id)
 			.then(artist => {
 				if (!artist)
@@ -20,6 +22,10 @@ export class ArtistService {
 					artist.lastName = lastName;
 				if (country)
 					artist.country = country;
+				if (lat)
+					artist.lat = lat;
+				if (long)
+					artist.long = long;
 				return artist.save()
 					.then(() => artist);
 			});

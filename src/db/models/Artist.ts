@@ -5,12 +5,16 @@ export interface IArtist extends mongoose.Document {
 	lastName: string;
 	country: string;
 	views?: number;
+	lat: number;
+	long: number;
 }
 
 export const ArtistSchema = new mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	country: String,
+	lat: Number,
+	long: Number,
 });
 
 const Artist = mongoose.model<IArtist>('Artist', ArtistSchema);
