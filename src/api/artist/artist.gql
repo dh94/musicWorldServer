@@ -3,6 +3,8 @@ type Artist {
   	firstName: String
   	lastName: String
   	country: String
+	long: Float
+	lat: Float
 	# sum of views of the artists songs
 	views: Int
 }
