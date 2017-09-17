@@ -12,6 +12,21 @@ module.exports = class Server {
 
 	static run(app, port) {
 		const server = app.listen(this.__normalizePort(port));
+		let io = require('socket.io').listen(server);
+		io.on('connection', function(socket){
+			socket.on('login',function(user){
+				console.log("connect " + user.userName + " with password " +  user.password);
+				socket.emit('loggedin', user.userName);
+			});
+			socket.on('logout', function () {
+				console.log("logout");
+				socket.emit('loggedout');
+			});
+			socket.on('register', function (user) {
+				console.log("register");
+				io.emit('registerd', user);
+			});
+		});
 		server.on('listening', () => this.__onListening(server));
 		server.on('error', (error) => this.__onError(server, error));
 		log.debug('Server was started on environment %s', Environment.getName());

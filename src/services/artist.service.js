@@ -80,7 +80,7 @@ module.exports = class ArtistService {
 					},
 				},
 				{ $limit: 10 },
-			],
+			]
 		).then(result => {
 			return Artist.find({
 				_id: {
